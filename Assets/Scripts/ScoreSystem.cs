@@ -8,8 +8,11 @@ public class ScoreSystem : MonoBehaviour
 
     [SerializeField] TMP_Text scoreText;
     [SerializeField] float scoreMultiplier = 1f;
+
     int scoreRint;
     float score;
+
+    public const string HighScoreKey = "HighScore";
 
 
 
@@ -20,5 +23,16 @@ public class ScoreSystem : MonoBehaviour
         scoreRint = Mathf.FloorToInt(score);
 
         scoreText.text = scoreRint.ToString();
+    }
+
+
+    private void OnDestroy()
+    {
+        int currentHighScore = PlayerPrefs.GetInt(HighScoreKey, 0);
+
+        if(score > currentHighScore)
+        {
+            PlayerPrefs.SetInt(HighScoreKey, Mathf.FloorToInt(score));
+        }
     }
 }

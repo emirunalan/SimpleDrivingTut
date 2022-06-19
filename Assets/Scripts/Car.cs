@@ -33,8 +33,8 @@ public class Car : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            int activeScene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(activeScene);
+            //int activeScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(0);
         }
     }
 
